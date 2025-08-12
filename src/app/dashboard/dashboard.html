@@ -1,0 +1,99 @@
+<section class="dashboardPage">
+
+    <!-------------------  MacroCalories Main Dashboard Header ------------------->
+    <header class="dashboardHeader">
+        <div class="dashboardHeaderTitle">
+            <div>
+                {{ today | date:'EEEE, MMMM d' }}
+            </div>
+            <h1>Dashboard</h1>
+        </div>
+    </header>
+
+    <!-------------------  MacroCalories Main Dashboard Information ------------------->
+    <section class="dashboardMain">
+
+        <!-------------------  Calorie Ring ------------------->
+        <div class="dashboardRingCard">
+            <h2>Daily Nutrition</h2>
+
+            <div class="dashboardRing" [style.--p]="progressPercent">
+                <div class="dashboardRingInformation">
+                    <h3>{{ caloriesLeftOrUsed() }}</h3>
+                    <h4 >{{ mode() === 'consumed' ? 'Consumed' : 'Remaining' }}</h4>
+                </div>
+            </div>
+
+            <!------------------- Extra Information ------------------->
+            <div class="dashboardRingMeta">
+                <div >
+                    <h4 >Consumed</h4>
+                    <h3 >{{ consumedCalories() }}</h3>
+                </div>
+                <div >
+                    <h4 >Target</h4>
+                    <h3 >{{ targetCalories() }}</h3>
+                </div>
+            </div>
+
+            <!------------------- Mode Buttons ------------------->
+            <div class="dashboardRingToggle">
+                <button [class.active]="mode() === 'consumed'" (click)="mode.set('consumed')">Consumed</button>
+                <button [class.active]="mode() === 'remaining'" (click)="mode.set('remaining')">Remaining</button>
+            </div>
+        </div>
+
+
+        <!------------------- Macro Information ------------------->
+        <div class="dashboardMacroCard">
+            <div class="dashboardMacro" *ngFor="let m of macros()">
+                <div class="row">
+                    <h3 class="label">{{ m.label }}</h3>
+                    <h4 class="amount">
+                        <ng-container *ngIf="mode() === 'consumed'; else remaining">
+                            {{ m.consumed }} / {{ m.target }}g
+                        </ng-container>
+                        <ng-template #remaining>
+                            {{ macroRemaining(m) }} / {{ m.target }}g
+                        </ng-template>
+                    </h4>
+                </div>
+                <div class="macroBar">
+                    <div class="fill" [style.--c]="m.color" [style.width.%]="macroProgress(m) * 100"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-------------------  MacroCalories Main Dashboard Information ------------------->
+    <section class="dashboardInsights">
+        <h3>Insights &amp; Analytics</h3>
+
+        <div class="dashboardInsightsCards">
+        <article class="card">
+            <div class="card-title">Expenditure <span>Last 7 Days</span></div>
+            <svg class="spark" viewBox="0 0 260 64" aria-hidden="true">
+            <path [attr.d]="spark(expenditure7d())" />
+            </svg>
+            <div class="card-value">2440 <span>kcal</span></div>
+        </article>
+
+        <article class="card">
+            <div class="card-title">Weight Trend <span>Last 7 Days</span></div>
+            <svg class="spark" viewBox="0 0 260 64" aria-hidden="true">
+            <path [attr.d]="spark(weight7d())" />
+            </svg>
+            <div class="card-value">62.4 <span>kg</span></div>
+        </article>
+
+         <article class="card">
+            <div class="card-title">Weight Trend <span>Last 7 Days</span></div>
+            <svg class="spark" viewBox="0 0 260 64" aria-hidden="true">
+            <path [attr.d]="spark(weight7d())" />
+            </svg>
+            <div class="card-value">62.4 <span>kg</span></div>
+        </article>
+        </div>
+    </section>
+</section>
+

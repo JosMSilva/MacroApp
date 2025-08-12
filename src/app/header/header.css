@@ -1,0 +1,90 @@
+/**************************** Navbar and Logo ****************************/
+
+/*Top of the screen container*/
+.head {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    width: calc(100% - 80px);
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+    min-width: 850px;
+    font-optical-sizing: auto;
+    font-style: normal;
+    height: 50px;
+}
+
+/*Logo*/
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 200px;
+    font-family: inherit;
+    font-weight: 600;
+    color: #f8f8f8;
+    text-decoration:none;
+    cursor: pointer;
+}
+
+    .logo span {
+        color: #555;
+        font-family: inherit;
+        font-weight: 900;
+    }
+
+    .logo:hover {
+        text-decoration: none;
+        color: #f8f8f8;
+    }
+
+/*Navbar*/
+.head nav {
+    background: #f8f8f8;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    border-bottom-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: relative;
+    width: 40%;
+    min-width: fit-content;
+    margin: 0 auto;
+}
+
+    .head nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 100;
+    }
+
+        .head nav a:hover {
+            color: #CA9A5A;
+        }
+
+/*Sign In Button*/
+.userBtnContainer {
+    width: 200px;
+    display: flex;
+    justify-content: right;
+    align-items: start;
+}
+
+.userBtn {
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: black 2px solid;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+    .userBtn:hover {
+        border: #555 2px solid;
+    }
