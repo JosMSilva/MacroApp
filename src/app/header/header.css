@@ -16,31 +16,40 @@
 }
 
 /*Logo*/
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 250px;
+}
+
+.logoImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    width: 200px;
     font-family: inherit;
     font-weight: 600;
-    color: #f8f8f8;
+    color: #f3f5f7;
     text-decoration:none;
     cursor: pointer;
 }
 
-    .logo span {
-        color: #555;
-        font-family: inherit;
-        font-weight: 900;
-    }
-
     .logo:hover {
         text-decoration: none;
-        color: #f8f8f8;
+        color: #f3f5f7;
     }
 
 /*Navbar*/
 .head nav {
-    background: #f8f8f8;
+    background: #9aa0a6;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-around;
@@ -56,35 +65,34 @@
 
     .head nav a {
         text-decoration: none;
-        color: #333;
-        font-weight: 500;
+        color: #f3f5f7;
         transition: color 0.3s ease;
         font-family: "Quicksand", sans-serif;
-        font-weight: 100;
+        font-weight: 400;
     }
 
         .head nav a:hover {
-            color: #CA9A5A;
+            color: #cb9445;
         }
 
 /*Sign In Button*/
 .userBtnContainer {
-    width: 200px;
+    width: 250px;
     display: flex;
-    justify-content: right;
-    align-items: start;
+    align-items: center;
 }
 
 .userBtn {
-    padding: 0.5rem 1rem;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    border: black 2px solid;
-    border-radius: 10px;
-    font-weight: 600;
-    margin-top: 5px;
+  flex-grow: 1;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: black 2px solid;
+  border-radius: 10px;
+  font-weight: 600;
+  font-family: inherit;
 }
 
     .userBtn:hover {
-        border: #555 2px solid;
+        border: #9aa0a6 2px solid;
     }

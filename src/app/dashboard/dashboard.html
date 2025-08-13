@@ -62,6 +62,21 @@
                     <div class="fill" [style.--c]="m.color" [style.width.%]="macroProgress(m) * 100"></div>
                 </div>
             </div>
+
+            <!------------------- Hourly Schedule ------------------->
+           
+<div class="dashboardScheduleCard">
+  <h2>Log</h2>
+  <div class="schedule-vertical">
+    <div class="hour-row" *ngFor="let h of hours">
+      <div class="hour-label">{{ h.time }}</div>
+      <div class="hour-event" [class.current]="isCurrentHour(h.time)">
+        {{ h.event || '—' }}
+      </div>
+    </div>
+  </div>
+</div>
+
         </div>
     </section>
 
@@ -70,29 +85,77 @@
         <h3>Insights &amp; Analytics</h3>
 
         <div class="dashboardInsightsCards">
-        <article class="card">
-            <div class="card-title">Expenditure <span>Last 7 Days</span></div>
-            <svg class="spark" viewBox="0 0 260 64" aria-hidden="true">
-            <path [attr.d]="spark(expenditure7d())" />
-            </svg>
-            <div class="card-value">2440 <span>kcal</span></div>
-        </article>
+            <article class="card">
+                <div class="card-title">Expenditure <span>Last 7 Days</span></div>
+                <svg class="spark" viewBox="0 0 260 64" aria-hidden="true">
+                    <!-- Main path -->
+                    <path [attr.d]="spark(expenditure7d())" />
 
-        <article class="card">
-            <div class="card-title">Weight Trend <span>Last 7 Days</span></div>
-            <svg class="spark" viewBox="0 0 260 64" aria-hidden="true">
-            <path [attr.d]="spark(weight7d())" />
-            </svg>
-            <div class="card-value">62.4 <span>kg</span></div>
-        </article>
+                    <!-- Dots -->
+                    <ng-container *ngFor="let dot of sparkDots(expenditure7d())">
+                    <circle [attr.cx]="dot.cx" [attr.cy]="dot.cy" r="2" class="spark-dot" />
+                    </ng-container>
 
-         <article class="card">
-            <div class="card-title">Weight Trend <span>Last 7 Days</span></div>
-            <svg class="spark" viewBox="0 0 260 64" aria-hidden="true">
-            <path [attr.d]="spark(weight7d())" />
-            </svg>
-            <div class="card-value">62.4 <span>kg</span></div>
-        </article>
+                    <!-- Average line -->
+                    <line
+                    *ngIf="sparkAvgLine(expenditure7d()) as avg"
+                    [attr.x1]="avg.x1"
+                    [attr.x2]="avg.x2"
+                    [attr.y1]="avg.y"
+                    [attr.y2]="avg.y"
+                    class="spark-avg"
+                    />
+                </svg>
+                <div class="card-value">{{ getAverage(expenditure7d()) }} <span>kcal</span></div>
+            </article>
+
+            <article class="card">
+                <div class="card-title">Weight Trend <span>Last 7 Days</span></div>
+                <svg class="spark" viewBox="0 0 260 64" aria-hidden="true">
+                    <!-- Main path -->
+                    <path [attr.d]="spark(weight7d())" />
+
+                    <!-- Dots -->
+                    <ng-container *ngFor="let dot of sparkDots(weight7d())">
+                    <circle [attr.cx]="dot.cx" [attr.cy]="dot.cy" r="2" class="spark-dot" />
+                    </ng-container>
+
+                    <!-- Average line -->
+                    <line
+                    *ngIf="sparkAvgLine(weight7d()) as avg"
+                    [attr.x1]="avg.x1"
+                    [attr.x2]="avg.x2"
+                    [attr.y1]="avg.y"
+                    [attr.y2]="avg.y"
+                    class="spark-avg"
+                    />
+                </svg>
+                <div class="card-value">{{ getAverage(weight7d()) }} <span>kg</span></div>
+            </article>
+
+            <article class="card">
+                <div class="card-title">Energy Balance <span>Last 7 Days</span></div>
+                <svg class="spark" viewBox="0 0 260 64" aria-hidden="true">
+                    <!-- Main path -->
+                    <path [attr.d]="spark(energyBalance7d())" />
+
+                    <!-- Dots -->
+                    <ng-container *ngFor="let dot of sparkDots(energyBalance7d())">
+                    <circle [attr.cx]="dot.cx" [attr.cy]="dot.cy" r="2" class="spark-dot" />
+                    </ng-container>
+
+                    <!-- Average line -->
+                    <line
+                    *ngIf="sparkAvgLine(energyBalance7d()) as avg"
+                    [attr.x1]="avg.x1"
+                    [attr.x2]="avg.x2"
+                    [attr.y1]="avg.y"
+                    [attr.y2]="avg.y"
+                    class="spark-avg"
+                    />
+                </svg>
+                <div class="card-value">{{ getAverage(energyBalance7d()) }} <span>kcal</span></div>
+            </article>
         </div>
     </section>
 </section>
