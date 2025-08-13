@@ -31,3 +31,4 @@ It also provides weekly insights such as expenditure trends, weight changes, and
 ## 🚀 Getting Started
 
 ### 1. Application Availabe At:
+https://josmsilva.github.io/MacroApp/
