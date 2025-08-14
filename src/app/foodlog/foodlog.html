@@ -1,0 +1,83 @@
+<section class="foodlogPage">
+    
+  <!-------------------  FoodLog Header ------------------->
+    <header class="foodlogHeader">
+        <div class="foodlogHeaderTitle">
+            <div>
+                {{ today | date:'EEEE, MMMM d' }}
+            </div>
+            <h1>Food Log</h1>
+        </div>
+    </header>
+
+    <!-------------------  FoodLog Main Information ------------------->
+   <div class="foodlogMain">
+    <div class="foodlogSchedule">
+        <div class="foodlogScheduleHeader">
+
+        <!-------------------  Day Selector ------------------->
+        <div class="selectorLine">
+            <div class="selectItem">
+                <i class="fa fa-chevron-left"></i>
+            </div>
+            <div *ngFor="let d of dates" class="dateItem" [class.active]="d.date === selectedDate" (click)="selectedDate = d.date">
+                <div class="day">{{ d.day }}</div>
+                <div class="number">{{ d.date }}</div>
+            </div>
+            <div class="selectItem">
+                <i class="fa fa-chevron-right"></i>
+            </div>
+        </div>
+  </div>
+
+  <!-- Food Log -->
+  <main class="foodlog-main">
+    <div class="log-group" *ngFor="let hour of hours">
+      <div class="time-label">{{ hour }}</div>
+      <div class="food-items" *ngIf="foodLog[hour].length > 0; else emptyHour">
+        <div class="food-card" *ngFor="let item of foodLog[hour]">
+          <div class="icon" [ngClass]="item.icon"></div>
+          <div class="details">
+            <strong>{{ item.name }}</strong>
+            <span>{{ item.details }}</span>
+          </div>
+        </div>
+      </div>
+      <ng-template #emptyHour>
+        
+      </ng-template>
+    </div>
+  </main>
+
+    </div>
+
+    <div class="foodlogInformation">
+      <div>
+        <span>764 / 2446</span>
+        <small>Calories</small>
+      </div>
+      <div>
+        <span>28 / 107</span>
+        <small>Protein</small>
+      </div>
+      <div>
+        <span>67 / 217</span>
+        <small>Carbs</small>
+      </div>
+      <div>
+        <span>27 / 110</span>
+        <small>Fat</small>
+      </div>
+    </div>
+    
+
+  
+
+   </div>
+
+    <footer class="foodlog-search">
+    <input type="text" placeholder="Search for a food" />
+    <button class="search-btn">🔍</button>
+  </footer>
+  
+</section>

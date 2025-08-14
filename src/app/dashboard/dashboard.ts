@@ -21,8 +21,8 @@ export class Dashboard {
   { label: 'Protein', color: '#ff7b6e', consumed: 95, target: 140 },
   { label: 'Fat',     color: '#f1c40f', consumed:  65, target:  92 },
   { label: 'Carbs',   color: '#2ecc71', consumed: 200, target: 346 },
-  //{ label: 'Saturated Fat',   color: '#f18f0fff', consumed: 20, target: 46 },
-  //{ label: 'Sugar',   color: '#2eccbfff', consumed: 28, target: 36 },
+  { label: 'Saturated Fat',   color: '#f18f0fff', consumed: 20, target: 46 },
+  { label: 'Sugar',   color: '#2eccbfff', consumed: 28, target: 36 },
   ]);
   expenditure7d = signal<number[]>([2440, 2460, 2540, 2430, 2420, 2440, 2440]);
   weight7d      = signal<number[]>([62.4, 62.4, 62.4, 62.4, 62.4, 62.4, 62.4]);

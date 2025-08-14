@@ -62,21 +62,6 @@
                     <div class="fill" [style.--c]="m.color" [style.width.%]="macroProgress(m) * 100"></div>
                 </div>
             </div>
-
-            <!------------------- Hourly Schedule ------------------->
-           
-<div class="dashboardScheduleCard">
-  <h2>Log</h2>
-  <div class="schedule-vertical">
-    <div class="hour-row" *ngFor="let h of hours">
-      <div class="hour-label">{{ h.time }}</div>
-      <div class="hour-event" [class.current]="isCurrentHour(h.time)">
-        {{ h.event || '—' }}
-      </div>
-    </div>
-  </div>
-</div>
-
         </div>
     </section>
 

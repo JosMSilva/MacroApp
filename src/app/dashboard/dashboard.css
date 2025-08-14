@@ -1,6 +1,3 @@
-:host {
-  --muted: #9aa0a6;
-}
 
 /********************* Dashboard Size Constraints *********************/
 .dashboardPage { 
@@ -190,11 +187,34 @@
     padding: 18px 18px 14px;
     box-shadow: 0 6px 24px rgba(0,0,0,.3);
 }
-.card-title { font-weight: 800; margin-bottom: 6px; }
-.card-title span { color: #9aa0a6; font-weight: 600; margin-left: 6px; }
-.spark { width: 100%; height: 64px; overflow: visible; }
-.card-value { margin-top: 8px; font-size: 20px; font-weight: 800; }
-.card-value span { color: #9aa0a6; font-weight: 700; font-size: 14px; }
+.dashboardInsightsCards .card-title { 
+    font-weight: 800;
+     margin-bottom: 6px; 
+}
+
+    .dashboardInsightsCards .card-title span { 
+        color: #9aa0a6; 
+        font-weight: 600; 
+        margin-left: 6px;
+    }
+
+.dashboardInsightsCards .spark { 
+    width: 100%; 
+    height: 64px; 
+    overflow: visible; 
+}
+
+.dashboardInsightsCards .card-value { 
+    margin-top: 8px; 
+    font-size: 20px; 
+    font-weight: 800; 
+}
+
+.dashboardInsightsCards .card-value span { 
+    color: #9aa0a6; 
+    font-weight: 700; 
+    font-size: 14px; 
+}
 
 .spark path {
   fill: none;
@@ -210,52 +230,4 @@
   stroke: red;
   stroke-width: 1;
   stroke-dasharray: 4, 2;
-}
-
-
-
-
-
-
-
-.dashboardScheduleCard {
-  background: var(--card-bg, #1e1e1e);
-  padding: 1rem;
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  margin-top: 1.5rem;
-}
-
-.schedule-vertical {
-  display: flex;
-  flex-direction: column;
-}
-
-.hour-row {
-  display: flex;
-  align-items: flex-start;
-  padding: 0.4rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.hour-label {
-  width: 50px;
-  font-size: 0.85rem;
-  color: #aaa;
-  text-align: right;
-  padding-right: 0.5rem;
-}
-
-.hour-event {
-  flex: 1;
-  background: rgba(255,255,255,0.05);
-  padding: 0.3rem 0.5rem;
-  border-radius: 0.3rem;
-  font-size: 0.9rem;
-  color: #fff;
-}
-
-.hour-event.current {
-  border-left: 3px solid #4285f4;
-  background: rgba(66,133,244,0.15);
 }
